@@ -12,7 +12,7 @@ interface GeometricAccentProps {
 const GeometricAccent: React.FC<GeometricAccentProps> = ({
   type = 'circle',
   position = 'top-right',
-  color = 'bg-blush-light',
+  color = 'bg-beige-light',
   size = 'medium',
   className = '',
 }) => {
