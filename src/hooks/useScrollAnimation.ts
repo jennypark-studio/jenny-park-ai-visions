@@ -26,6 +26,8 @@ export const useScrollAnimation = () => {
     
     const parallaxElements = document.querySelectorAll('.parallax-element');
     parallaxElements.forEach((element) => {
+      // Cast to HTMLElement to access style property
+      const htmlElement = element as HTMLElement;
       const scrollPosition = window.scrollY;
       const elementTop = element.getBoundingClientRect().top + scrollPosition;
       const elementInView = scrollPosition > elementTop - window.innerHeight && 
@@ -36,13 +38,13 @@ export const useScrollAnimation = () => {
         const direction = element.getAttribute('data-parallax-direction') || 'up';
         
         if (direction === 'up') {
-          element.style.transform = `translateY(-${distance}px)`;
+          htmlElement.style.transform = `translateY(-${distance}px)`;
         } else if (direction === 'down') {
-          element.style.transform = `translateY(${distance}px)`;
+          htmlElement.style.transform = `translateY(${distance}px)`;
         } else if (direction === 'left') {
-          element.style.transform = `translateX(-${distance}px)`;
+          htmlElement.style.transform = `translateX(-${distance}px)`;
         } else if (direction === 'right') {
-          element.style.transform = `translateX(${distance}px)`;
+          htmlElement.style.transform = `translateX(${distance}px)`;
         }
       }
     });

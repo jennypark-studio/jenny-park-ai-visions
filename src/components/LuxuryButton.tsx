@@ -3,7 +3,8 @@ import React from 'react';
 import { Button, type ButtonProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-interface LuxuryButtonProps extends ButtonProps {
+// Omit the 'variant' from ButtonProps to avoid type conflicts
+interface LuxuryButtonProps extends Omit<ButtonProps, 'variant'> {
   children: React.ReactNode;
   variant?: 'primary' | 'ghost' | 'minimal';
   withShimmer?: boolean;
@@ -42,6 +43,7 @@ const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   return (
     <Button
       className={getButtonClasses()}
+      variant="ghost" // Use a base shadcn variant that we'll override with our classes
       {...props}
     >
       {children}
