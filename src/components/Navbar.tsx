@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -21,6 +20,15 @@ const Navbar: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const scrollToForm = () => {
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = '/contact#contact-form';
+    }
+  };
 
   return (
     <header 
@@ -47,8 +55,12 @@ const Navbar: React.FC = () => {
           <Link to="/contact" className="text-gray-800 hover:text-gray-600 transition-colors">
             Contact
           </Link>
-          <Button variant="outline" className="border border-gray-300">
-            Book a Call
+          <Button 
+            variant="outline" 
+            className="border border-gray-300"
+            onClick={scrollToForm}
+          >
+            Interested in working with us?
           </Button>
         </nav>
 
@@ -104,9 +116,12 @@ const Navbar: React.FC = () => {
             <Button 
               variant="outline" 
               className="border w-full border-gray-300"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                scrollToForm();
+                setIsMobileMenuOpen(false);
+              }}
             >
-              Book a Call
+              Interested in working with us?
             </Button>
           </div>
         </div>
