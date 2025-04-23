@@ -5,9 +5,21 @@ interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  animation?: 'fade' | 'slide' | 'text' | 'scale';
+  direction?: 'up' | 'down' | 'left' | 'right';
+  duration?: number;
+  threshold?: number;
 }
 
-const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className = '', delay = 0 }) => {
+const ScrollReveal: React.FC<ScrollRevealProps> = ({ 
+  children, 
+  className = '', 
+  delay = 0, 
+  animation = 'fade',
+  direction = 'up',
+  duration = 700,
+  threshold = 0.1
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -22,7 +34,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className = '', d
         }
       },
       {
-        threshold: 0.1,
+        threshold,
       }
     );
 
@@ -35,14 +47,77 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className = '', d
         observer.unobserve(ref.current);
       }
     };
-  }, [delay]);
+  }, [delay, threshold]);
+
+  // Define transform styles based on animation type and direction
+  const getInitialStyles = () => {
+    if (animation === 'fade') {
+      return {
+        opacity: 0,
+        transform: direction === 'up' ? 'translateY(20px)' : 
+                  direction === 'down' ? 'translateY(-20px)' : 
+                  direction === 'left' ? 'translateX(20px)' : 
+                  'translateX(-20px)'
+      };
+    }
+    
+    if (animation === 'slide') {
+      return {
+        opacity: 0,
+        transform: direction === 'up' ? 'translateY(50px)' : 
+                  direction === 'down' ? 'translateY(-50px)' : 
+                  direction === 'left' ? 'translateX(50px)' : 
+                  'translateX(-50px)'
+      };
+    }
+    
+    if (animation === 'scale') {
+      return {
+        opacity: 0,
+        transform: 'scale(0.95)'
+      };
+    }
+    
+    if (animation === 'text') {
+      return {
+        overflow: 'hidden'
+      };
+    }
+    
+    return {};
+  };
+
+  if (animation === 'text') {
+    // Special case for text reveal animation
+    return (
+      <div 
+        ref={ref}
+        className={`text-reveal ${isVisible ? 'revealed' : ''} ${className}`}
+      >
+        <div 
+          className="text-reveal-content"
+          style={{
+            transitionDelay: `${delay}ms`,
+            transitionDuration: `${duration}ms`
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
       ref={ref}
-      className={`${className} transition-opacity transition-transform duration-700 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
+      className={className}
+      style={{
+        ...getInitialStyles(),
+        opacity: isVisible ? 1 : getInitialStyles().opacity,
+        transform: isVisible ? 'translate(0) scale(1)' : getInitialStyles().transform,
+        transition: `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
+        transitionDelay: `${delay}ms`
+      }}
     >
       {children}
     </div>
