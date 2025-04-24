@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
               Interested in working with us?
             </h3>
             <p className="text-gray-600 mb-6">
-              Fill out a quick survey, and we'll reach out to explore how we can
-              help!
+              Do you have a specific need? Share it with us, or allow us to
+              analyze your business and offer a tailored solution.
             </p>
 
             <Button
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
                 )
               }
             >
-              Interested in working with us?
+              Tell Us About Your Needs
             </Button>
           </div>
         </div>
@@ -60,7 +60,9 @@ const Footer: React.FC = () => {
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/jennypark7/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg
@@ -100,7 +102,7 @@ const Footer: React.FC = () => {
                 </svg>
               </a>
               <a
-                href="#"
+                href="http://instagram.com/jenssocials"
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <svg

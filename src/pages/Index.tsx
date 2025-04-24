@@ -81,8 +81,8 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <ScrollReveal delay={100}>
               <ServiceCard
-                title="AI Consulting for Business Strategy"
-                description="Strategic implementation of AI solutions tailored to your specific business needs, enhancing operations and driving growth."
+                title="Free Customized Website Design & Mockup"
+                description="Start with a complimentary, customized website design and mockup. We’ll create a unique digital presence with core features that align with your brand and goals."
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +106,8 @@ const Index = () => {
 
             <ScrollReveal delay={200}>
               <ServiceCard
-                title="Keynote Speaking & Thought Leadership"
-                description="Engaging presentations on AI trends, implementation strategies, and future outlooks tailored for events, conferences, and corporate workshops."
+                title="Lead Generation System"
+                description="Turn visitors into valuable leads with our comprehensive lead generation system, designed to capture and nurture potential clients."
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -235,7 +235,7 @@ const Index = () => {
       </section>
 
       {/* Blog/Insights Section */}
-      <section className="py-16 md:py-24">
+      {/* <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
             <ScrollReveal>
@@ -294,7 +294,7 @@ const Index = () => {
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>
