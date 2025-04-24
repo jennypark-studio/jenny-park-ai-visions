@@ -1,9 +1,8 @@
-
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ScrollReveal from '@/components/ScrollReveal';
-import GoogleFormEmbed from '@/components/GoogleFormEmbed';
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
+import GoogleFormEmbed from "@/components/GoogleFormEmbed";
 
 const Contact = () => {
   return (
@@ -18,9 +17,6 @@ const Contact = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair leading-tight mb-6">
                 Let's Work Together
               </h1>
-              <p className="text-lg text-gray-600">
-                Transform your space with our expert design and remodeling services.
-              </p>
             </ScrollReveal>
           </div>
         </div>
@@ -40,9 +36,12 @@ const Contact = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <ScrollReveal>
-              <h2 className="text-3xl md:text-4xl font-playfair mb-4">Other Ways to Connect</h2>
+              <h2 className="text-3xl md:text-4xl font-playfair mb-4">
+                Other Ways to Connect
+              </h2>
               <p className="text-lg text-gray-600 mb-8">
-                For press inquiries or urgent matters, please reach out directly.
+                For press inquiries or urgent matters, please reach out
+                directly.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
                 <div className="space-y-2">
